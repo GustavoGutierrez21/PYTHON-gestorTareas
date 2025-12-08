@@ -1,0 +1,41 @@
+# Entorno virtual
+venv/
+ENV/
+env/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.log
+
+# Archivos de entorno
+*.env
+.env.*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Paquetes
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Uvicorn reload
+*.pid
+
+# Cache de herramientas
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# VSCode
+.vscode/
+
+# IDEs
+.idea/
