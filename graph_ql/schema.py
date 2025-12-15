@@ -1,9 +1,10 @@
 import strawberry
 from accounts.graphql.schema import Mutation as AccountsMutation
+from accounts.graphql.schema import UserRoleQuery
 
 
 @strawberry.type
-class Query:
+class Query(UserRoleQuery):
     @strawberry.field
     def hello(self) -> str:
         return "Hola mundo!"
