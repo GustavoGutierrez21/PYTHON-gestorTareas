@@ -34,13 +34,13 @@ El objetivo principal es demostrar dominio profesional sobre:
 1. Clonar el repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo
+   git clone https://github.com/GustavoGutierrez21/PYTHON-gestorTareas
    ```
 
 2. Entrar en la carpeta del proyecto:
 
    ```bash
-   cd tu-repo
+   cd PYTHON-gestorTareas
    ```
 
 3. Crear un entorno virtual:
@@ -145,18 +145,6 @@ query {
   hello
 }
 ```
-
----
-
-## 🔐 (Opcional) Autenticación con JWT en Altair
-
-Cuando agregues login, podrás enviar tokens así:
-
-1. En Altair → "Headers"
-2. Agregar:
-   ```
-   Authorization: Bearer <TU_ACCESS_TOKEN>
-   ```
 
 ---
 

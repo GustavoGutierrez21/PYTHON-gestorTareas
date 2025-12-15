@@ -1,4 +1,5 @@
 import strawberry
+from accounts.graphql.schema import Mutation as AccountsMutation
 
 
 @strawberry.type
@@ -8,4 +9,16 @@ class Query:
         return "Hola mundo!"
 
 
-schema = strawberry.Schema(query=Query)
+@strawberry.type
+class Mutation(AccountsMutation):
+    """
+    Mutations globales
+    (hereda las de accounts)
+    """
+    pass
+
+
+schema = strawberry.Schema(
+    query=Query,
+    mutation=Mutation,
+)
