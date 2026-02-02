@@ -1,29 +1,33 @@
 import strawberry
+from strawberry.types import Info
 
 from core.logging.logger import Logger
-from accounts.services import UserRoleService
-from accounts.graphql.inputs import CreateUserRoleInput, DeleteUserRoleInput, UpdateUserRoleInput
-from accounts.graphql.types import CreateUserRoleResponse, DeleteUserRoleResponse, UpdateUserRoleResponse
-
-logger = Logger("Roles")
+from accounts.services import UserRoleService, UserService
+from accounts.graphql.inputs import CreateUserInput, CreateUserRoleInput, DeleteUserRoleInput, UpdateUserRoleInput
+from accounts.graphql.types import CreateUserResponse, CreateUserRoleResponse, DeleteUserRoleResponse, UpdateUserRoleResponse
 
 
+# ===============================================================================================================================================================================
+# region ROLES
+# ===============================================================================================================================================================================
 @strawberry.type(
     description="Mutations relacionadas con roles de usuario."
 )
 class UserRoleMutation:
+    logger = Logger("Roles")
+    service = UserRoleService()
+
+
     # ============================
     # region crear rol
     # ============================
     @strawberry.mutation(
         description="Crea un nuevo rol de usuario."
     )
-    def create_user_role(
-        self,
-        input: CreateUserRoleInput
-    ) -> CreateUserRoleResponse:
-        logger.log(f"Creando rol con los siguientes parametros {input}")
-        return UserRoleService.create_role(input)
+    @staticmethod
+    def create_user_role(input: CreateUserRoleInput) -> CreateUserRoleResponse:
+        UserRoleMutation.logger.log(f"Creando rol con los siguientes parametros {input}")
+        return UserRoleMutation.service.create_role(input)
     # endregion
     
     
@@ -33,12 +37,10 @@ class UserRoleMutation:
     @strawberry.mutation(
         description="Actualizar un rol de usuario."
     )
-    def update_user_role(
-        self,
-        input: UpdateUserRoleInput
-    ) -> UpdateUserRoleResponse:
-        logger.log(f"Actualizando rol con los siguientes parametros {input}")
-        return UserRoleService.update_role(input)
+    @staticmethod
+    def update_user_role(input: UpdateUserRoleInput) -> UpdateUserRoleResponse:
+        UserRoleMutation.logger.log(f"Actualizando rol con los siguientes parametros {input}")
+        return UserRoleMutation.service.update_role(input)
     
     
     # ============================
@@ -47,10 +49,33 @@ class UserRoleMutation:
     @strawberry.mutation(
         description="Elimina un rol de usuario."
     )
-    def delete_user_role(
-        self,
-        input: DeleteUserRoleInput
-    ) -> DeleteUserRoleResponse:
-        logger.log(f"Eliminando rol con los siguientes parametros {input}")
-        return UserRoleService.delete_role(input)
+    @staticmethod
+    def delete_user_role(input: DeleteUserRoleInput) -> DeleteUserRoleResponse:
+        UserRoleMutation.logger.log(f"Eliminando rol con los siguientes parametros {input}")
+        return UserRoleMutation.service.delete_role(input)
+    # endregion
+
+
+# ===============================================================================================================================================================================
+# region USER
+# ===============================================================================================================================================================================
+@strawberry.type(
+    description="Mutations relacionadas con usuarios."
+)
+class UsersMutation:
+    logger = Logger("Users")
+    service = UserService()
+
+    # ============================
+    # region crear usuario
+    # ============================
+    @strawberry.mutation(
+        description="Crea un nuevo usuario."
+    )
+    @staticmethod
+    def create_user(input: CreateUserInput) -> CreateUserResponse:
+        UsersMutation.logger.log(
+            f"Creando usuario con los siguientes parametros {input}"
+        )
+        return UsersMutation.service.create_user(input)
     # endregion

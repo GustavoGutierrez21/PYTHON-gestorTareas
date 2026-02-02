@@ -1,8 +1,14 @@
 import strawberry
+from enum import Enum
 from uuid import UUID
 from typing import Optional
 
 from core.graphql.inputs.pagination import PaginationInput
+
+# ===============================================================================================================================================================================
+# region ROLES
+# ===============================================================================================================================================================================
+
 
 
 # ===================================
@@ -37,6 +43,14 @@ class UserRoleFiltersInput:
     name: Optional[str] = strawberry.field(
         description="Nombre del rol a buscar.",
         default=None,
+    )
+    
+    user_create: str = strawberry.field(
+        description="Usuario que creo el rol."
+    )
+    
+    user_update: str = strawberry.field(
+        description="Ultimo usuario que modifico el rol."
     )
 
 @strawberry.input(
@@ -86,3 +100,62 @@ class DeleteUserRoleInput:
     id_user_role: UUID = strawberry.field(
         description="Id del rol a eliminar.",
     )
+# endregion
+
+
+# endregion
+# ===============================================================================================================================================================================
+# region USERS
+# ===============================================================================================================================================================================
+
+
+
+# ===================================
+# region Enum statusUSer
+# ===================================
+@strawberry.enum(
+    description="Estado del usuario"
+)
+class UserStatusEnum(Enum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    BLOCKED = "BLOCKED"
+    DELETED = "DELETED"
+
+
+# ===================================
+# region create user
+# ===================================
+@strawberry.input(
+    description="Datos necesarios para crear un usuario."
+)
+class CreateUserInput:
+    id_user_role: UUID = strawberry.field(
+        description="ID del rol asignado al usuario."
+    )
+
+    name: str = strawberry.field(
+        description="Nombre del usuario."
+    )
+
+    last_name: str = strawberry.field(
+        description="Apellidos del usuario."
+    )
+
+    username: str = strawberry.field(
+        description="Nombre de usuario único."
+    )
+
+    email: str = strawberry.field(
+        description="Correo electrónico único del usuario."
+    )
+
+    password: str = strawberry.field(
+        description="Contraseña del usuario (será almacenada hasheada)."
+    )
+
+    status: UserStatusEnum = strawberry.field(
+        description="Estado inicial del usuario.",
+        default=UserStatusEnum.ACTIVE
+    )
+    

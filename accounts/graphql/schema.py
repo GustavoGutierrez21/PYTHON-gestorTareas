@@ -1,10 +1,10 @@
 import strawberry
-from accounts.graphql.mutations import UserRoleMutation
 from accounts.graphql.queries import UserRoleQuery
+from accounts.graphql.mutations import UserRoleMutation, UsersMutation
 
 
 @strawberry.type
-class Mutation(UserRoleMutation):
+class Mutation(UserRoleMutation, UsersMutation):
     """
     Schema de mutations del módulo accounts
     """
