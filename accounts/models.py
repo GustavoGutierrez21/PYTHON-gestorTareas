@@ -4,6 +4,7 @@ import uuid
 # Create your models here.
 
 
+# region Role
 class UserRole(models.Model):
     id_user_role = models.UUIDField(
         primary_key=True,
@@ -32,3 +33,4 @@ class UserRole(models.Model):
         db_table = "user_role"
         verbose_name = "User Role"
         verbose_name_plural = "User Roles"
+# endregion

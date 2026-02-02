@@ -1,9 +1,12 @@
 import strawberry
-from typing import Optional, List
-from uuid import UUID
-from accounts.graphql.types import GetUserRoleResponse
+from typing import Optional
+
+from core.logging.logger import Logger
 from accounts.services import UserRoleService
-from accounts.graphql.inputs import GetUserRoleInput
+from accounts.graphql.inputs import GetUserRolesInput
+from accounts.graphql.types import GetUserRoleResponse
+
+logger = Logger("Roles")
 
 
 @strawberry.type(
@@ -16,7 +19,7 @@ class UserRoleQuery:
     )
     def get_user_roles(
         self,
-        input: Optional[GetUserRoleInput] = None
+        input: Optional[GetUserRolesInput] = None
     ) -> GetUserRoleResponse:
-
+        logger.log(f"Buscando roles con los siguientes parametros {input}")
         return UserRoleService.get_roles(input)

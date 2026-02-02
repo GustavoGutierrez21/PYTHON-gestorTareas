@@ -50,7 +50,6 @@ El objetivo principal es demostrar dominio profesional sobre:
    ```
 
 4. Activarlo:
-
    - Windows:
      ```bash
      venv\Scripts\activate
@@ -96,58 +95,6 @@ Incluye:
 
 ---
 
-# 🧪 Uso de Altair GraphQL Client (Recomendado)
-
-Altair es un cliente moderno para hacer queries y mutations a tu API GraphQL.
-
----
-
-## 🔧 Instalación de Altair
-
-### ✔ Extensión del Navegador (Recomendada)
-
-Chrome / Edge / Brave:
-
-```
-https://chromewebstore.google.com/detail/altair-graphql-client/iflndnncoankcfdgplajneolgaankcjg
-```
-
-Firefox:
-
-```
-https://addons.mozilla.org/en-US/firefox/addon/altair-graphql-client/
-```
-
-### ✔ Aplicación de escritorio (opcional)
-
-Descargar desde:
-
-```
-https://altairgraphql.dev/
-```
-
----
-
-## 🚀 Usar Altair con tu proyecto Django
-
-1. Abrir Altair
-2. En la barra superior, pegar tu endpoint:
-   ```
-   http://localhost:8000/graphql/
-   ```
-3. Dar clic en **Set URL**
-4. Ya puedes ejecutar queries y mutations
-
-Ejemplo:
-
-```graphql
-query {
-  hello
-}
-```
-
----
-
 ## ✨ Características del Proyecto
 
 - CRUD completo de proyectos y tareas
@@ -161,6 +108,5 @@ query {
   - N:M Miembros con roles
 - GraphQL con Strawberry (Code-first)
 - Documentación automática con GraphiQL
-- Probado en Altair
 
 ---
